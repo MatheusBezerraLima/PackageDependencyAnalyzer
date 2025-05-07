@@ -7,32 +7,53 @@
     <title> ANALYZER DEPENDENCY </title>
 </head>
 <body>
+    <header>
+        <div class="logo">Logo</div>
+        <div class="menu">
+            <button onclick="toggleModal()"> ℹ️ Info</button>
+            <button onclick="toggleSlideBar()"> ⚙️ Opções</button>
+        </div>
+    </header>
     <main>
         <div class="flex-row">
             <div class="container-content">
 
             </div>
             <div class="interactive-menu">
-                <div class="header-menu">
+                <!-- <div class="header-menu">
                     <h1>Menu Interativo</h1>
-                </div>
+                </div> -->
                 <div class="body-menu">
                     <div class="box-input">
-                        <input type="text" placeholder="Procure a dependencia...">
+                        <label for="input-search-package"><h3>Buscar</h3></label>
+                        <input type="text" name="input-search-package" placeholder="Digite o nome do pacote">
                     </div>
                     <div class="filter-group">
                         <div class="title-filter-group">
-                                <p>Ordenar</h1>
+                            <h3>Mostrar</h3>
                         </div>
                         <ul class="filter-group-list">
-                            <li><input type="checkbox" name="Árvore" id="">Árvore</li>
-                            <li><input type="checkbox" name="Radial" id="">Radial</li>
-                            <li><input type="checkbox" name="XXXXXX" id="">XXXXX</li>
+                            <li><input type="checkbox" name="Nome" id="">Nome</li>
+                            <li><input type="checkbox" name="Versão" id="">Versão</li>
+                            <li><input type="checkbox" name="Tamanho" id="">Tamanho</li>
+                            <li><input type="checkbox" name="Ultimas-atualizacoes" id="">Últimas atualizações</li>
+                            <li><input type="checkbox" name="Vulnerabilidades" id="">Vulnerabilidades</li>
                         </ul>
                     </div>
                     <div class="filter-group">
                         <div class="title-filter-group">
-                            <p>Filtro</h1>
+                                <h3>Escolha o Layout </h3>
+                        </div>
+                        <ul class="filter-group-list">
+                            <li><input type="checkbox" name="Árvore" id="">Árvore</li>
+                            <li><input type="checkbox" name="Circulo" id="">Circulo</li>
+                            <li><input type="checkbox" name="Grade" id="">Grade</li>
+                            <li><input type="checkbox" name="Forca-direcionada" id="">Força DIrecionada</li>
+                        </ul>
+                    </div>
+                    <div class="filter-group">
+                        <div class="title-filter-group">
+                            <h3>Filtro</h3>
                         </div>
                         <ul class="filter-group-list">
                             <li><input type="checkbox" name="Dependencias Globais" id="">Dependencias Globais</li>
