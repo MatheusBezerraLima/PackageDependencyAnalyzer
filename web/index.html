@@ -1,72 +1,109 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./styles.css">
-    <title> ANALYZER DEPENDENCY </title>
-</head>
-<body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./styles.css" />
+    <title>ANALYZER DEPENDENCY</title>
+  </head>
+  <body>
     <header>
-        <div class="logo">Logo</div>
-        <div class="menu">
-            <button onclick="toggleModal()"> ℹ️ Info</button>
-            <button onclick="toggleSlideBar()"> ⚙️ Opções</button>
-        </div>
+      <div class="logo">Logo</div>
+      <div class="menu">
+        <button onclick="toggleModal()">ℹ️ Info</button>
+        <button onclick="toggleSlideBar()">⚙️ Opções</button>
+      </div>
     </header>
     <main>
-        <div class="flex-row">
-            <div class="container-content">
-
-            </div>
-            <div class="interactive-menu">
-                <!-- <div class="header-menu">
+      <div class="graph-container">
+        <div class="graph-area">
+          <div class="hud">
+            <div><strong>Resumo:</strong></div>
+            <div>📦 Pacotes: <span id="total-packages">--</span></div>
+            <div>🔁 Duplicados: <span id="duplicated">--</span></div>
+            <div>⚠️ Desatualizados: <span id="outdated">--</span></div>
+            <div>🔒 Vulneráveis: <span id="vulnerable">--</span></div>
+          </div>
+        </div>
+        <div class="interactive-menu">
+          <!-- <div class="header-menu">
                     <h1>Menu Interativo</h1>
                 </div> -->
-                <div class="body-menu">
-                    <div class="box-input">
-                        <label for="input-search-package"><h3>Buscar</h3></label>
-                        <input type="text" name="input-search-package" placeholder="Digite o nome do pacote">
-                    </div>
-                    <div class="filter-group">
-                        <div class="title-filter-group">
-                            <h3>Mostrar</h3>
-                        </div>
-                        <ul class="filter-group-list">
-                            <li><input type="checkbox" name="Nome" id="">Nome</li>
-                            <li><input type="checkbox" name="Versão" id="">Versão</li>
-                            <li><input type="checkbox" name="Tamanho" id="">Tamanho</li>
-                            <li><input type="checkbox" name="Ultimas-atualizacoes" id="">Últimas atualizações</li>
-                            <li><input type="checkbox" name="Vulnerabilidades" id="">Vulnerabilidades</li>
-                        </ul>
-                    </div>
-                    <div class="filter-group">
-                        <div class="title-filter-group">
-                                <h3>Escolha o Layout </h3>
-                        </div>
-                        <ul class="filter-group-list">
-                            <li><input type="checkbox" name="Árvore" id="">Árvore</li>
-                            <li><input type="checkbox" name="Circulo" id="">Circulo</li>
-                            <li><input type="checkbox" name="Grade" id="">Grade</li>
-                            <li><input type="checkbox" name="Forca-direcionada" id="">Força DIrecionada</li>
-                        </ul>
-                    </div>
-                    <div class="filter-group">
-                        <div class="title-filter-group">
-                            <h3>Filtro</h3>
-                        </div>
-                        <ul class="filter-group-list">
-                            <li><input type="checkbox" name="Dependencias Globais" id="">Dependencias Globais</li>
-                            <li><input type="checkbox" name="Dependencias de Dev" id="">Dependencias Dev</li>
-                        </ul>
-                    </div>
-
-                    <div class="box-button">
-                        <button class="export-button"> EXPORTAR </button>   
-                    </div>
-                </div>
+          <div class="body-menu">
+            <div class="box-input">
+              <label for="input-search-package"><h3>Buscar</h3></label>
+              <input
+                type="text"
+                name="input-search-package"
+                placeholder="Digite o nome do pacote"
+              />
             </div>
+            <div class="filter-group">
+              <div class="title-filter-group">
+                <h3>Mostrar</h3>
+              </div>
+              <ul class="filter-group-list">
+                <li><input type="checkbox" name="Nome" id="" />Nome</li>
+                <li><input type="checkbox" name="Versão" id="" />Versão</li>
+                <li><input type="checkbox" name="Tamanho" id="" />Tamanho</li>
+                <li>
+                  <input
+                    type="checkbox"
+                    name="Ultimas-atualizacoes"
+                    id=""
+                  />Últimas atualizações
+                </li>
+                <li>
+                  <input
+                    type="checkbox"
+                    name="Vulnerabilidades"
+                    id=""
+                  />Vulnerabilidades
+                </li>
+              </ul>
+            </div>
+            <div class="filter-group">
+              <div class="title-filter-group">
+                <h3>Escolha o Layout</h3>
+              </div>
+              <ul class="filter-group-list">
+                <li><input type="checkbox" name="Árvore" id="" />Árvore</li>
+                <li><input type="checkbox" name="Circulo" id="" />Circulo</li>
+                <li><input type="checkbox" name="Grade" id="" />Grade</li>
+                <li>
+                  <input type="checkbox" name="Forca-direcionada" id="" />Força
+                  DIrecionada
+                </li>
+              </ul>
+            </div>
+            <div class="filter-group">
+              <div class="title-filter-group">
+                <h3>Filtro</h3>
+              </div>
+              <ul class="filter-group-list">
+                <li>
+                  <input
+                    type="checkbox"
+                    name="Dependencias Globais"
+                    id=""
+                  />Dependencias Globais
+                </li>
+                <li>
+                  <input
+                    type="checkbox"
+                    name="Dependencias de Dev"
+                    id=""
+                  />Dependencias Dev
+                </li>
+              </ul>
+            </div>
+
+            <div class="box-button">
+              <button class="export-button">EXPORTAR</button>
+            </div>
+          </div>
         </div>
+      </div>
     </main>
-</body>
+  </body>
 </html>
