@@ -17,6 +17,12 @@
     <main>
       <div class="graph-container">
         <div class="graph-area">
+          <!-- GRAFICO AQUI -->
+          <form action="/upload" method="post" id="uploadForm" enctype="multipart/form-data">
+            <input type="file" name="avatar"/>
+            <input type="submit">
+          </form>
+
           <div class="hud">
             <div><strong>Resumo:</strong></div>
             <div>📦 Pacotes: <span id="total-packages">--</span></div>
@@ -25,6 +31,7 @@
             <div>🔒 Vulneráveis: <span id="vulnerable">--</span></div>
           </div>
         </div>
+
         <div class="interactive-menu">
           <!-- <div class="header-menu">
                     <h1>Menu Interativo</h1>
