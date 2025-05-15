@@ -1,19 +1,19 @@
+import { analyserJsonService } from '../services/analyzer.js';
+
 export const verifyTypeFile = async (req, res, next) => {
   const dataFile = req.file;
-
+  
   if (!dataFile) {
     res.status(401).json({ erro: "Nenhum arquivo adicionado" });
   }
 
   try {
-    const typeFile = dataFile.mimetype;
+    const nameFile = dataFile.originalname;
 
-    if (typeFile != "application/json") {
-      console.log("Type de arquivo errado, mande um arquivo .json");
+    if (nameFile != "package.json") {
+      console.log("O unico arquivo aceito é o 'package.json' !!");
       return;
     }
-
-    console.log(dataFile);
     next();
   } catch (err) {
     res.status(400).json({ erro: "Erro ao ler o arquivo"})
@@ -23,4 +23,5 @@ export const verifyTypeFile = async (req, res, next) => {
 export const getGraphBuilder = async (req, res) => {
   const file = req.file;
 
+  await analyserJsonService(file.filename, res)
 };
