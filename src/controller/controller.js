@@ -1,4 +1,5 @@
 import { analyserJsonService } from '../services/analyzer.js';
+import { generateGraphModelService } from '../services/generateGraphModel.js';
 
 export const verifyTypeFile = async (req, res, next) => {
   const dataFile = req.file;
@@ -23,5 +24,12 @@ export const verifyTypeFile = async (req, res, next) => {
 export const getGraphBuilder = async (req, res) => {
   const file = req.file;
 
-  await analyserJsonService(file.filename, res)
+  const { dependencies }  = await analyserJsonService(file.filename, res)
+
+  if(dependencies === ""){
+    console.log('Sem dependencias no projeto!');
+  }
+
+  await generateGraphModelService(dependencies);
+  
 };

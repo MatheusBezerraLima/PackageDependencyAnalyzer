@@ -4,17 +4,26 @@ import fs from 'fs';
 import { application } from 'express';
 
 export const analyserJsonService = async(file, res) => {
-    const pathData = path.join(__dirname, `/public/data/uploads/${file}`)
+    const pathData = path.join(__dirname, `/public/data/uploads/${file}`);
+
     try{
-        const data = fs.readFileSync(pathData, 'utf-8');        
-        const dataJson = JSON.parse(data)
-        console.log(dataJson.dependencies);
+        const data = fs.readFileSync(pathData, 'utf-8');   
         
-        res.writeHead(200, {"content-type": "application/json"});
-        res.end(JSON.stringify(dataJson))
+        if(!data){
+            console.log("Vazio");
+            return { dependencies: ""}
+        }
         
+        const dataJson = JSON.parse(data);
+        const dependencies = dataJson.dependencies
+        
+        if(!dependencies){
+            return {dependencies: ""};
+        }
+
+        return {dependencies: dependencies};
+
     }catch(err){
-        console.log(err);
-        return;
+        throw new Error(err.code);
     }
 }
