@@ -24,12 +24,12 @@ export const verifyTypeFile = async (req, res, next) => {
 export const getGraphBuilder = async (req, res) => {
   const file = req.file;
 
-  const { dependencies }  = await analyserJsonService(file.filename, res)
+  const { dependencies, projectName }  = await analyserJsonService(file.filename, res)
 
   if(dependencies === ""){
     console.log('Sem dependencias no projeto!');
   }
 
-  await generateGraphModelService(dependencies);
+  await generateGraphModelService(dependencies, projectName);
   
 };

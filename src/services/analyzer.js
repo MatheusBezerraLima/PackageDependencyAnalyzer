@@ -16,12 +16,14 @@ export const analyserJsonService = async(file, res) => {
         
         const dataJson = JSON.parse(data);
         const dependencies = dataJson.dependencies
-        
+        const projectName = dataJson.name
+
+
         if(!dependencies){
-            return {dependencies: ""};
+            return {dependencies: "", projectName: ""};
         }
 
-        return {dependencies: dependencies};
+        return {dependencies: dependencies, projectName: projectName};
 
     }catch(err){
         throw new Error(err.code);
