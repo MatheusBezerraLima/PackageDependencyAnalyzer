@@ -6,11 +6,23 @@ export const generateGraphModelService = async (dependencies, projectName) => {
     ];
     const edges = [];
 
-    for( const [pkg, version] of Object.entries(dependencies)){
-        nodes.push( {data: { id: pkg, label: `${pkg}@${version}`} } );
-        edges.push( {data: {source: projectName, target: pkg} });
+    const visited = new Set();
+
+    const buildGraph = (currentPkg, deps) => {
+        for( const [pkg, version] of Object.entries(dependencies)){
+
+            if(visited.has(pkg)) continue;
+            visited.add(pkg);
+            console.log(pkg);
+            
+            nodes.push( {data: { id: pkg, label: `${pkg}@${version}`} } );
+            edges.push( {data: {source: projectName, target: pkg} });
+        }
+
     }
 
+    buildGraph(projectName, dependencies);
+    
     console.log("nodes:", nodes);
     console.log("edges:", edges);
     
