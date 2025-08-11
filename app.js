@@ -9,10 +9,16 @@ app.set('views', './views');
 app.use(express.json());
 app.use(cors());
 app.use(express.urlencoded( {extended: true}));
-app.use('/static', express.static('./web'));
+app.use(express.static('public'));
 
-app.listen(3333, () => {
-    console.log('Servidor rodando na porta 3333');
+console.log('ANTES');
+
+app.listen(3000, (err) => {
+    console.log('Servidor rodando na porta 3000');
+
+    if(err){
+        console.log(err);
+    }
 });
 
 
