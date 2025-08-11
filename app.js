@@ -11,10 +11,10 @@ app.use(cors());
 app.use(express.urlencoded( {extended: true}));
 app.use(express.static('public'));
 
-console.log('ANTES');
+const root_dirname = __dirname;
 
-app.listen(3000, (err) => {
-    console.log('Servidor rodando na porta 3000');
+app.listen(3333, (err) => {
+    console.log('Servidor rodando na porta 3333');
 
     if(err){
         console.log(err);
@@ -23,5 +23,5 @@ app.listen(3000, (err) => {
 
 
 module.exports = () => {
-    return app;
+    return {"app_config": app, "root_dirname": root_dirname};
 }

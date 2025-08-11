@@ -1,10 +1,10 @@
-const config = require('./app.js')();
+const { app_config } = require('./app.js')();
 const multer = require('multer');
 const path = require('path');
 const {getGraphBuilder, verifyTypeFile} = require('./src/controller/controller.js')
 const upload = multer({ dest: "./public/data/uploads/"});
 
-const app = config;
+const app = app_config;
 
 app.get('/', (req, res) => {
     res.render('index.ejs');

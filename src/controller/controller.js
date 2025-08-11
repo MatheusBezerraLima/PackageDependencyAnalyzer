@@ -1,6 +1,7 @@
-const { analyserJsonService } = require('../services/analyzer.js');
+const analyserJsonService = require('../services/analyzer.js');
 const { generateGraphModelService } = require('../services/generateGraphModel.js');
 
+// Middleware para verificar o tipo de arquivo recebido
 const verifyTypeFile = async (req, res, next) => {
   const dataFile = req.file;
   
@@ -24,14 +25,18 @@ const verifyTypeFile = async (req, res, next) => {
 const getGraphBuilder = async (req, res) => {
   const file = req.file;
 
-  const { dependencies, projectName }  = await analyserJsonService(file.filename, res)
+  try{
+    const { dependencies, projectName }  = await analyserJsonService(file.filename, res)
 
-  if(dependencies === ""){
-    console.log('Sem dependencias no projeto!');
+    if(dependencies === ""){
+      console.log('Sem dependencias no projeto!');
+    }
+    console.log("Qui");
+    
+    await generateGraphModelService(dependencies, projectName);
+  }catch(err){
+    console.log(err);
   }
-
-  await generateGraphModelService(dependencies, projectName);
-  
 };
 
 
