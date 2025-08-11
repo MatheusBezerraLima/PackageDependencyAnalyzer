@@ -1,20 +1,21 @@
-import express from 'express';
-import cors from 'cors';
-import path from 'path'
-import { __dirname } from './src/utils/paths.js';
-
+const express = require('express');
+const cors = require('cors');
+const path = require('path');
 const app = express();
+
+app.set('view engine', 'ejs');
+app.set('views', './views');
 
 app.use(express.json());
 app.use(cors());
 app.use(express.urlencoded( {extended: true}));
-app.use(express.static(path.join(__dirname, 'web')));
+app.use('/static', express.static('./web'));
 
 app.listen(3333, () => {
     console.log('Servidor rodando na porta 3333');
 });
 
 
-export const config = () => {
+module.exports = () => {
     return app;
 }

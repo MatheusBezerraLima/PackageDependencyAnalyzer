@@ -1,16 +1,13 @@
-import { config } from './app.js';
-import multer from 'multer';
-import { __dirname } from './src/utils/paths.js';
-import path from 'path';
-import { getGraphBuilder, verifyTypeFile } from './src/controller/controller.js';
-
+const config = require('./app.js')();
+const multer = require('multer');
+const path = require('path');
+const {getGraphBuilder, verifyTypeFile} = require('./src/controller/controller.js')
 const upload = multer({ dest: "./public/data/uploads/"});
 
-const app = config();
-
+const app = config;
 
 app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, '/web/index.html'));
+    res.render('index.ejs');
 });
 
 

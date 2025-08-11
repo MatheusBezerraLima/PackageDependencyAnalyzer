@@ -1,7 +1,7 @@
-import { analyserJsonService } from '../services/analyzer.js';
-import { generateGraphModelService } from '../services/generateGraphModel.js';
+const { analyserJsonService } = require('../services/analyzer.js');
+const { generateGraphModelService } = require('../services/generateGraphModel.js');
 
-export const verifyTypeFile = async (req, res, next) => {
+const verifyTypeFile = async (req, res, next) => {
   const dataFile = req.file;
   
   if (!dataFile) {
@@ -21,7 +21,7 @@ export const verifyTypeFile = async (req, res, next) => {
   }
 };
 
-export const getGraphBuilder = async (req, res) => {
+const getGraphBuilder = async (req, res) => {
   const file = req.file;
 
   const { dependencies, projectName }  = await analyserJsonService(file.filename, res)
@@ -33,3 +33,6 @@ export const getGraphBuilder = async (req, res) => {
   await generateGraphModelService(dependencies, projectName);
   
 };
+
+
+module.exports = {verifyTypeFile, getGraphBuilder};

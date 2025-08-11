@@ -1,9 +1,7 @@
-import path from 'path';
-import { __dirname } from '../utils/paths.js';
-import fs from 'fs';
-import { application } from 'express';
+const path =  require('path');
+const fs = require('fs');
 
-export const analyserJsonService = async(file, res) => {
+const analyserJsonService = async(file, res) => {
     const pathData = path.join(__dirname, `/public/data/uploads/${file}`);
 
     try{
@@ -18,7 +16,6 @@ export const analyserJsonService = async(file, res) => {
         const dependencies = dataJson.dependencies
         const projectName = dataJson.name
 
-
         if(!dependencies){
             return {dependencies: "", projectName: ""};
         }
@@ -29,3 +26,5 @@ export const analyserJsonService = async(file, res) => {
         throw new Error(err.code);
     }
 }
+
+module.exports = analyserJsonService;

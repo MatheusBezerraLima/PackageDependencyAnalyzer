@@ -1,5 +1,5 @@
 
-export const generateGraphModelService = async (dependencies, projectName) => {
+const generateGraphModelService = async (dependencies, projectName) => {
     
     const nodes = [
         { data: { id: projectName, label: projectName} }
@@ -27,3 +27,5 @@ export const generateGraphModelService = async (dependencies, projectName) => {
     console.log("edges:", edges);
     
 }
+
+module.exports = generateGraphModelService;
