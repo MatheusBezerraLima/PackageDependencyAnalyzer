@@ -1,15 +1,18 @@
 const path =  require('path');
 const fs = require('fs');
-const { root_dirname } = require('../../app.js');
 
-const analyserJsonService = async(file, res) => {    
-    const pathData = path.join(root_dirname, `/public/data/uploads/${file}`);
+class Services{
+    // Função que analiza o arquivo json retornando as suas dependencias em uma variável 
+    async analyserJsonService(file){
+
+    const rootDir = path.resolve(__dirname, '../..'); // sobe 1 pasta     
+    const pathData = path.join(rootDir, `/public/data/uploads/${file.filename}`);
     
     try{
         const data = fs.readFileSync(pathData, 'utf-8');   
         
         if(!data){
-            console.log("Vazio");
+            console.log("Arquivo vazio!!");
             return { dependencies: ""}
         }
         
@@ -19,14 +22,13 @@ const analyserJsonService = async(file, res) => {
 
         if(!dependencies){
             return {dependencies: "", projectName: ""};
-        }
-        console.log({"dependencies": dependencies, "projectName": projectName});
-        
-        return {dependencies: dependencies, projectName: projectName};
+        }  
 
+        return {dependencies: dependencies, projectName: projectName};
     }catch(err){
         throw new Error(err);
     }
 }
+}
 
-module.exports = analyserJsonService;
+module.exports = new Services;

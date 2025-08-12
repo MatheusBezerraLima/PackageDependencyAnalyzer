@@ -4,7 +4,7 @@ form.addEventListener('submit', async (e) => {
   e.preventDefault();
   const formData = new FormData(form);
 
-  const res = await fetch('/upload', {
+  const res = await fetch('/analyze', {
     method: 'POST',
     body: formData
   });
