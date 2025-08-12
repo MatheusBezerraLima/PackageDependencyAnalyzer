@@ -1,6 +1,6 @@
 const axios = require('axios');
 
-const getPackageVersionDetails = async(packageName, packageVersion){
+const getPackageVersionDetails = async(packageName, packageVersion) => {
     try{
         const response = await axios.get(`https://registry.npmjs.org/${packageName}/${packageVersion}`);
         return response.data;
@@ -10,3 +10,4 @@ const getPackageVersionDetails = async(packageName, packageVersion){
     }
 }
 
+module.exports = getPackageVersionDetails;
